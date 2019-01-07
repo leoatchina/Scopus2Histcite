@@ -1,7 +1,6 @@
 #coding:utf-8
 import os
 import sys
-import numpy
 
 def Scopus2HistCite():
     try:
