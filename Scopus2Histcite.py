@@ -1,14 +1,14 @@
-#coding:utf-8
+# coding:utf-8
 import os
 import sys
+
 
 def Scopus2HistCite():
     try:
         wrt_lines = []
-        if len(sys.argv) >= 2:
-            if os.path.isfile(sys.argv[1]):
-                print("You are going to convert {}".format(sys.argv[1]))
-                Scopus_file = sys.argv[1]
+        if len(sys.argv) >= 2 and os.path.isfile(sys.argv[1]):
+            print("You are going to convert {}".format(sys.argv[1]))
+            Scopus_file = sys.argv[1]
         elif os.path.isfile("./Scopus.ris"):
             print("You are going to convert ./Scopus.ris")
             Scopus_file = './Scopus.ris'
@@ -17,15 +17,15 @@ def Scopus2HistCite():
         auth_started = False
         ref_started = False
         LT = [
-            'TI', # title
-            'T2', # jounal
-            'AU', # author
-            'VL', # volumn
-            'IS', # issue
-            'SP', # start page
-            'EP', # end page
-            'PY', # public year
-            'DO'
+            'TI',  # title
+            'T2',  # jounal
+            'AU',  # author
+            'VL',  # volumn
+            'IS',  # issue
+            'SP',  # start page
+            'EP',  # end page
+            'PY',  # public year
+            'DO',  # maybe doi? not important
         ]
         wrt_lines.append('FN Thomson Reuters Web of Knowledge™')
         wrt_lines.append('VR 1.0')
