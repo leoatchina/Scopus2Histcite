@@ -1,6 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File              : Scopus2Histcite.py
+# Author            : leoatchina<leoatchina@outlook.com> 
+# Date              : 2019.01.01
+# Last Modified Date: 2020.07.29
+# Last Modified By  : leoatchina <leoatchina@outlook.com>
 # coding:utf-8
+
 import os
 import sys
+import re
 
 
 def Scopus2HistCite():
@@ -42,9 +51,10 @@ def Scopus2HistCite():
                         ref_started = False
                     else:
                         wrt_lines.append(line)
-                elif line[:14] == 'N1 References:':
+                elif re.search("^N1[\s\-]+References:", line):
                     ref_started = True
-                    line = line.replace(line[:14], 'CR')
+                    # line = line.replace(line[:14], 'CR')
+                    line = re.sub("^N1[\s\-]+References:", 'CR', line)
                     wrt_lines.append(line)
                 elif mark in LT:
                     if mark == 'TI':
